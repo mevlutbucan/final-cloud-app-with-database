@@ -9,7 +9,6 @@ except Exception:
 from django.conf import settings
 import uuid
 
-
 # Instructor model
 class Instructor(models.Model):
     user = models.ForeignKey(
@@ -21,7 +20,6 @@ class Instructor(models.Model):
 
     def __str__(self):
         return self.user.username
-
 
 # Learner model
 class Learner(models.Model):
@@ -51,7 +49,6 @@ class Learner(models.Model):
         return self.user.username + "," + \
                self.occupation
 
-
 # Course model
 class Course(models.Model):
     name = models.CharField(null=False, max_length=50, default='online course')
@@ -66,7 +63,6 @@ class Course(models.Model):
     def __str__(self):
         return "Course: " + self.name
 
-
 # Lesson model
 class Lesson(models.Model):
     title = models.CharField(max_length=200, default="title")
@@ -76,7 +72,6 @@ class Lesson(models.Model):
 
     def __str__(self):
         return "Lesson: " + self.title
-
 
 # Enrollment model
 # <HINT> Once a user enrolled a class, an enrollment entry should be created between the user and course
@@ -95,7 +90,6 @@ class Enrollment(models.Model):
     date_enrolled = models.DateField(default=now)
     mode = models.CharField(max_length=5, choices=COURSE_MODES, default=AUDIT)
     rating = models.FloatField(default=5.0)
-
 
 # <HINT> Create a Question Model with:
     # Used to persist question content for a course
@@ -123,7 +117,6 @@ class Question(models.Model):
         else:
             return False
 
-
 #  <HINT> Create a Choice Model with:
     # Used to persist choice content for a question
     # One-To-Many (or Many-To-Many if you want to reuse choices) relationship with Question
@@ -134,7 +127,6 @@ class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     content = models.CharField(max_length=200)
     is_correct = models.BooleanField(default=False)
-
 
 # <HINT> The submission model
 # One enrollment could have multiple submission

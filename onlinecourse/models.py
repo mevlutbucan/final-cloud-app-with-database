@@ -98,11 +98,8 @@ class Enrollment(models.Model):
     # Has question content
     # Other fields and methods you would like to design
 class Question(models.Model):
-    # Foreign key to lesson
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    # question text
     content = models.CharField(max_length=200)
-    # question grade/mark
     grade = models.IntegerField(default=50)
 
     def __str__(self):
@@ -134,5 +131,5 @@ class Choice(models.Model):
 # One choice could belong to multiple submissions
 class Submission(models.Model):
     enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
-    chocies = models.ManyToManyField(Choice)
+    choices = models.ManyToManyField(Choice)
     # Other fields and methods you would like to design

@@ -1,11 +1,11 @@
-  applications:
-  - name: onlinecourse
+applications:
+  - name: coursera-django-final
     routes:
-      - route: host.domain
+      - route: django-final.eu-gb.cf.appdomain.cloud
     memory: 128M
     buildpack: python_buildpack
-  - name: onlinecourse-nginx
+  - name: coursera-django-final-nginx
     routes:
-      - route: host.domain/static
+      - route: django-final.eu-gb.cf.appdomain.cloud/static
     memory: 128M
     buildpack: staticfile_buildpack
